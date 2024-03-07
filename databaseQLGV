@@ -1,0 +1,21 @@
+IF NOT EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = N'QLGV')
+BEGIN
+    CREATE DATABASE QLGV
+    COLLATE SQL_Latin1_General_CP1_CI_AS;
+END;
+
+--DBCC CHECKDB('CNPM_N11');
+use QLGV
+
+-- Tạo bảng Người dùng (User)
+drop table if exists Users;
+CREATE TABLE Users (
+    userID NVARCHAR(255) not null,
+    email NVARCHAR(255) UNIQUE NOT NULL,
+    password NVARCHAR(255) NOT NULL,
+    fullName NVARCHAR(255) NOT NULL,
+	birthdate date,
+    phoneNumber NVARCHAR(20),
+	chucvu nvarchar(255) NOT NULL,
+	constraint PK_userID primary key(userID)
+);
