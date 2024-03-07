@@ -1,9 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\bin",
-    "\\obj",
-    "\\Properties"
+    "\\bin"
   ],
   "SelectedNode": "\\DangNhap.cs",
   "PreviewInSolutionExplorer": false
