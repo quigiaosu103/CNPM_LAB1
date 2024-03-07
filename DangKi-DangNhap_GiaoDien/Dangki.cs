@@ -2,6 +2,7 @@ namespace DangKi
 {
     public partial class Dangki : Form
     {
+        string key;
         public Dangki()
         {
             InitializeComponent();
@@ -39,12 +40,40 @@ namespace DangKi
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (txtPass.Text == txtPass2.Text)
+            {
+                if (txtCode.Text.Length > 0 && txtCode.Text == key)
+                {
+                    MessageBox.Show("Success");
+                }
+                else
+                {
+                    MessageBox.Show("Verify code fail");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Password not same");
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCode_Click(object sender, EventArgs e)
+        {
+            XacThuc xacThuc = new XacThuc();
+            key = xacThuc.GenerateRandomKey(6);
+            xacThuc.verifyCodeSender(txtEmail.Text, key);
+
+        }
+
+        private void txtCode_TextChanged(object sender, EventArgs e)
+        {
+            
+           
         }
     }
 }

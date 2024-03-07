@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\OneDrive\\TDTU\\CNPM\\Thực hành\\buoi4\\DangKi-DangNhap\\DangKi.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\OneDrive\\TDTU\\CNPM\\Thực hành\\buoi4\\DangKi-DangNhap_GiaoDien\\DangKi.csproj",
       "projectName": "DangKi",
-      "projectPath": "C:\\Users\\HP\\OneDrive\\TDTU\\CNPM\\Thực hành\\buoi4\\DangKi-DangNhap\\DangKi.csproj",
+      "projectPath": "C:\\Users\\HP\\OneDrive\\TDTU\\CNPM\\Thực hành\\buoi4\\DangKi-DangNhap_GiaoDien\\DangKi.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\OneDrive\\TDTU\\CNPM\\Thực hành\\buoi4\\DangKi-DangNhap\\obj\\",
+      "outputPath": "C:\\Users\\HP\\OneDrive\\TDTU\\CNPM\\Thực hành\\buoi4\\DangKi-DangNhap_GiaoDien\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
