@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\OneDrive\\TDTU\\CNPM\\Thực hành\\buoi4\\DangKi-DangNhap_GiaoDien\\DangKi.csproj": {}
+    "Q:\\code\\TeacherAssistant\\DangKi-DangNhap_GiaoDien\\DangKi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\OneDrive\\TDTU\\CNPM\\Thực hành\\buoi4\\DangKi-DangNhap_GiaoDien\\DangKi.csproj": {
+    "Q:\\code\\TeacherAssistant\\DangKi-DangNhap_GiaoDien\\DangKi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\OneDrive\\TDTU\\CNPM\\Thực hành\\buoi4\\DangKi-DangNhap_GiaoDien\\DangKi.csproj",
+        "projectUniqueName": "Q:\\code\\TeacherAssistant\\DangKi-DangNhap_GiaoDien\\DangKi.csproj",
         "projectName": "DangKi",
-        "projectPath": "C:\\Users\\HP\\OneDrive\\TDTU\\CNPM\\Thực hành\\buoi4\\DangKi-DangNhap_GiaoDien\\DangKi.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\OneDrive\\TDTU\\CNPM\\Thực hành\\buoi4\\DangKi-DangNhap_GiaoDien\\obj\\",
+        "projectPath": "Q:\\code\\TeacherAssistant\\DangKi-DangNhap_GiaoDien\\DangKi.csproj",
+        "packagesPath": "C:\\Users\\k\\.nuget\\packages\\",
+        "outputPath": "Q:\\code\\TeacherAssistant\\DangKi-DangNhap_GiaoDien\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\k\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +39,22 @@
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -58,7 +74,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
