@@ -13,8 +13,8 @@ namespace DangKi.Models
         public DateTime dateTime { get; set; }
         public bool IsCanceled { get; set; }
         public bool IsCompleted { get; set; }
-        public string Room { get; set; }
-        public Teacher Teacher { get; set; }
-        public Course Course { get; set; }
+        public string? Room { get; set; }
+        public Teacher? Teacher { get; set; }
+        public Course? Course { get; set; }
     }
 }
