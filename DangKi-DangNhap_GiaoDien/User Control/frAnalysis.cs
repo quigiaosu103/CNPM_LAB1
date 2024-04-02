@@ -112,8 +112,55 @@ namespace DangKi.User_Control
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            DateTime from = dateTimePicker1.Value.Date;
+            DateTime to = dateTimePicker2.Value.Date;
+            int totalEarned = 0;
+            var duration = 0;
+            gunaLineDataset.DataPoints.Clear();
+            gunaLineEarnedDataset.DataPoints.Clear();
+            using (var context = new MyDbContext())
+            {
+                var earnedList = context.Schedules
+                   .Where(sc => sc.Teacher.TeacherId == 1 && sc.dateTime.Date >= from && sc.dateTime.Date <= to)
+                   .GroupBy(sc => sc.dateTime.Date)
+                   .Select(sc => new
+                   {
+                       date = sc.Key,
+                       value = sc.Sum(g => g.Course.Price * g.Duration)
+                   }).ToList();
 
+                foreach (var schedule in earnedList)
+                {
+                    totalEarned += schedule.value;
+                    gunaLineEarnedDataset.DataPoints.Add(new LPoint()
+                    {
+                        Label = schedule.date.ToString("dd/MM/yy"),
+                        Y = schedule.value,
+                    });
+                }
+                var list = context.Schedules
+                    .Where(sc => sc.Teacher.TeacherId == 1 && sc.dateTime.Date >= from && sc.dateTime.Date <= to)
+                    .GroupBy(sc => sc.dateTime.Date)
+                    .Select(sc => new
+                    {
+                        date = sc.Key,
+                        value = sc.Sum(g => g.Duration)
+                    }).ToList();
+                foreach (var schedule in list)
+                {
+                    duration += schedule.value;
+                    gunaLineDataset.DataPoints.Add(new LPoint()
+                    {
+                        Label = schedule.date.ToString("dd/MM/yy"),
+                        Y = schedule.value,
+                    });
+                }
+
+                txtDuration.Text = duration.ToString();
+                txtTotalEarned.Text = totalEarned.ToString();
+
+
+            }
         }
         private GunaLineDataset gunaLineDataset;
         private GunaLineDataset gunaLineEarnedDataset;

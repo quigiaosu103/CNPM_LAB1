@@ -74,11 +74,6 @@
             label2 = new Label();
             dateTimePicker2 = new DateTimePicker();
             dateTimePicker1 = new DateTimePicker();
-            table = new DataGridView();
-            colName = new DataGridViewTextBoxColumn();
-            colTime = new DataGridViewTextBoxColumn();
-            colEarn = new DataGridViewTextBoxColumn();
-            colDateTime = new DataGridViewTextBoxColumn();
             txt = new Label();
             txtTotalEarned = new Label();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
@@ -89,9 +84,7 @@
             txtDuration = new Label();
             gunaChart = new Guna.Charts.WinForms.GunaChart();
             gunaChartEarned = new Guna.Charts.WinForms.GunaChart();
-            label4 = new Label();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)table).BeginInit();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             guna2Panel2.SuspendLayout();
@@ -165,36 +158,6 @@
             dateTimePicker1.Size = new Size(200, 23);
             dateTimePicker1.TabIndex = 0;
             // 
-            // table
-            // 
-            table.BackgroundColor = Color.White;
-            table.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            table.Columns.AddRange(new DataGridViewColumn[] { colName, colTime, colEarn, colDateTime });
-            table.Location = new Point(14, 80);
-            table.Name = "table";
-            table.Size = new Size(498, 211);
-            table.TabIndex = 2;
-            // 
-            // colName
-            // 
-            colName.HeaderText = "Course";
-            colName.Name = "colName";
-            // 
-            // colTime
-            // 
-            colTime.HeaderText = "Duration";
-            colTime.Name = "colTime";
-            // 
-            // colEarn
-            // 
-            colEarn.HeaderText = "Earned";
-            colEarn.Name = "colEarn";
-            // 
-            // colDateTime
-            // 
-            colDateTime.HeaderText = "Date";
-            colDateTime.Name = "colDateTime";
-            // 
             // txt
             // 
             txt.AutoSize = true;
@@ -228,7 +191,7 @@
             guna2Panel1.Controls.Add(txtTotalEarned);
             guna2Panel1.CustomizableEdges = customizableEdges3;
             guna2Panel1.FillColor = Color.FromArgb(0, 182, 122);
-            guna2Panel1.Location = new Point(553, 83);
+            guna2Panel1.Location = new Point(15, 95);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges4;
             guna2Panel1.Size = new Size(312, 100);
@@ -259,7 +222,7 @@
             guna2Panel2.Controls.Add(txtDuration);
             guna2Panel2.CustomizableEdges = customizableEdges7;
             guna2Panel2.FillColor = Color.FromArgb(104, 41, 201);
-            guna2Panel2.Location = new Point(553, 191);
+            guna2Panel2.Location = new Point(15, 221);
             guna2Panel2.Name = "guna2Panel2";
             guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2Panel2.Size = new Size(312, 100);
@@ -309,9 +272,9 @@
             // 
             chartFont1.FontName = "Arial";
             gunaChart.Legend.LabelFont = chartFont1;
-            gunaChart.Location = new Point(459, 339);
+            gunaChart.Location = new Point(381, 314);
             gunaChart.Name = "gunaChart";
-            gunaChart.Size = new Size(406, 184);
+            gunaChart.Size = new Size(475, 184);
             gunaChart.TabIndex = 10;
             chartFont2.FontName = "Arial";
             chartFont2.Size = 12;
@@ -344,9 +307,9 @@
             // 
             chartFont9.FontName = "Arial";
             gunaChartEarned.Legend.LabelFont = chartFont9;
-            gunaChartEarned.Location = new Point(15, 339);
+            gunaChartEarned.Location = new Point(381, 95);
             gunaChartEarned.Name = "gunaChartEarned";
-            gunaChartEarned.Size = new Size(402, 184);
+            gunaChartEarned.Size = new Size(475, 184);
             gunaChartEarned.TabIndex = 11;
             chartFont10.FontName = "Arial";
             chartFont10.Size = 12;
@@ -375,35 +338,21 @@
             gunaChartEarned.ZAxes.Ticks = tick6;
             gunaChartEarned.Load += gunaChartEarned_Load;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.ForeColor = Color.FromArgb(104, 41, 201);
-            label4.Location = new Point(15, 294);
-            label4.Name = "label4";
-            label4.Size = new Size(69, 25);
-            label4.TabIndex = 12;
-            label4.Text = "Charts";
-            // 
             // frAnalysis
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(label4);
             Controls.Add(gunaChartEarned);
             Controls.Add(gunaChart);
             Controls.Add(guna2Panel2);
             Controls.Add(guna2Panel1);
-            Controls.Add(table);
             Controls.Add(panel1);
             Controls.Add(label1);
             Name = "frAnalysis";
             Size = new Size(882, 545);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)table).EndInit();
             guna2Panel1.ResumeLayout(false);
             guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
@@ -423,11 +372,6 @@
         private DateTimePicker dateTimePicker2;
         private DateTimePicker dateTimePicker1;
         private Button button1;
-        private DataGridView table;
-        private DataGridViewTextBoxColumn colName;
-        private DataGridViewTextBoxColumn colTime;
-        private DataGridViewTextBoxColumn colEarn;
-        private DataGridViewTextBoxColumn colDateTime;
         private Label txt;
         private Label txtTotalEarned;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
@@ -438,6 +382,5 @@
         private Label txtDuration;
         private Guna.Charts.WinForms.GunaChart gunaChart;
         private Guna.Charts.WinForms.GunaChart gunaChartEarned;
-        private Label label4;
     }
 }
