@@ -148,7 +148,7 @@ namespace DangKi.Controller
                     var replacedMonth = month.Replace("Tháng ", "");
                     monthh = int.Parse(replacedMonth);
                 }
-                var day = context.ScheduleDetails.Select(e => new { e.Schedule.Id, e.Salary, e.Daily, e.timeStart, e.timeEnd }).ToList();
+                var day = context.ScheduleDetails.Select(e => new { e.Schedule.Id, e.Salary, e.Daily, e.timeStart, e.timeEnd }).Where(y=>y.Daily == dailyy).ToList();
                 foreach (var i in day) /*tinhtheoca*/
                 {
                     totalSalary = totalTime = 0;
@@ -203,12 +203,13 @@ namespace DangKi.Controller
                         if (dayStartAndEnd.dateTime.Month == monthh)
                         {
                             List<double> ddoubles = new List<double>();
-                            //MessageBox.Show(dayStartAndEnd.dateTime.ToString());
                             ddoubles = getDayFirstMonth(dayStartAndEnd.dateTime);
+
                             string[] dayInWeek = ["T2", "T3", "T4", "T5", "T6", "T7", "CN"];
                             double count = 0;
                             foreach (var daily in arrListStr)
                             {
+                               
                                 int a = Array.IndexOf(dayInWeek, daily);
                                 count = count + ddoubles[a];
                                
