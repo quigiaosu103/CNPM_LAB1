@@ -11,10 +11,11 @@ namespace DangKi.Models
         public int Id { get; set; }
         public int Duration { get; set; }
         public DateTime dateTime { get; set; }
+        public DateTime dateTimeEnd { get; set; }
         public bool IsCanceled { get; set; }
         public bool IsCompleted { get; set; }
-        public string? Room { get; set; }
-        public Teacher? Teacher { get; set; }
-        public Course? Course { get; set; }
+        public string Room { get; set; }
+        public Teacher Teacher { get; set; }
+        public Course Course { get; set; }
     }
 }

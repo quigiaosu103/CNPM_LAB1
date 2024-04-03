@@ -13,11 +13,5 @@
     <Compile Update="User Control\frAnalysis.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="User Control\frSalary.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="User Control\frSchedule.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
   </ItemGroup>
 </Project>

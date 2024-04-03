@@ -10,8 +10,8 @@ namespace DangKi.Models
     public class Course
     {
         [Key]
-        public required string CourseId { get; set; }
-        public string? CourseName { get; set; }
+        public string CourseId { get; set; }
+        public string CourseName { get; set; }
         public int Price { get; set; }
     }
 }
