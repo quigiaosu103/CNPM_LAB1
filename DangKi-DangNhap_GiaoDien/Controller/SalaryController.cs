@@ -96,7 +96,7 @@ namespace DangKi.Controller
                         {
                             List<double> doubles = new List<double>();
                             doubles = getDayFirstMonth(dayStartAndEnd.dateTime);
-                            string[] dayInWeek = ["T2", "T3", "T4", "T5", "T6", "T7", "CN"];
+                            string[] dayInWeek = new string[7] { "T2", "T3", "T4", "T5", "T6", "T7", "CN" };
                             double count = 0;
                             foreach (var daily in arrListStr)
                             {
@@ -205,7 +205,7 @@ namespace DangKi.Controller
                             List<double> ddoubles = new List<double>();
                             ddoubles = getDayFirstMonth(dayStartAndEnd.dateTime);
 
-                            string[] dayInWeek = ["T2", "T3", "T4", "T5", "T6", "T7", "CN"];
+                            string[] dayInWeek = new string[7] { "T2", "T3", "T4", "T5", "T6", "T7", "CN" };
                             double count = 0;
                             foreach (var daily in arrListStr)
                             {
@@ -220,7 +220,7 @@ namespace DangKi.Controller
                         {
                             List<double> ddoubless = new List<double>();
                             ddoubless = getDayLastMonth(dayStartAndEnd.dateTimeEnd);
-                            string[] dayInWeek = ["T2", "T3", "T4", "T5", "T6", "T7", "CN"];
+                            string[] dayInWeek = new string[7] { "T2", "T3", "T4", "T5", "T6", "T7", "CN" };
                             double counts = 0;
                             foreach (var daily in arrListStr)
                             {

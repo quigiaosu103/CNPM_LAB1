@@ -80,7 +80,7 @@ namespace DangKi.User_Control
                     });
                 }
 
-               
+
 
             }
 
@@ -165,6 +165,9 @@ namespace DangKi.User_Control
         private GunaLineDataset gunaLineDataset;
         private GunaLineDataset gunaLineEarnedDataset;
 
-        
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

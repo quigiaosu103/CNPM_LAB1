@@ -13,7 +13,7 @@ namespace DangKi.Controller
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string dbConnection = "server=localhost;uid=root;pwd=;database=TeacherAssistant";
+            string dbConnection = "server=127.0.0.1;uid=root;pwd=;database=TeacheraAssistant";
             optionsBuilder.UseMySql(dbConnection, ServerVersion.AutoDetect(dbConnection));
         }
 
