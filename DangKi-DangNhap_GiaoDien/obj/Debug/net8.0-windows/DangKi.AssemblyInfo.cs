@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DangKi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fbd725b5b310c82a4a477df1fd7832ea74b6b417")]
 [assembly: System.Reflection.AssemblyProductAttribute("DangKi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DangKi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

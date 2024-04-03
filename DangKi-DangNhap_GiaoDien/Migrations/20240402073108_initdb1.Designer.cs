@@ -11,15 +11,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DangKi.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20240401163908_updateCourseField")]
-    partial class updateCourseField
+    [Migration("20240402073108_initdb1")]
+    partial class initdb1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.16")
+                .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("DangKi.Models.Course", b =>
@@ -28,10 +28,8 @@ namespace DangKi.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("CourseName")
+                        .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
 
                     b.HasKey("CourseId");
 
@@ -45,6 +43,7 @@ namespace DangKi.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CourseId")
+                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<int>("Duration")
@@ -57,9 +56,10 @@ namespace DangKi.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Room")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("TeacherId")
+                    b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("dateTime")
@@ -74,6 +74,25 @@ namespace DangKi.Migrations
                     b.ToTable("Schedules");
                 });
 
+            modelBuilder.Entity("DangKi.Models.ScheduleDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Salary")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ScheduleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ScheduleId");
+
+                    b.ToTable("ScheduleDetails");
+                });
+
             modelBuilder.Entity("DangKi.Models.Teacher", b =>
                 {
                     b.Property<int>("TeacherId")
@@ -81,15 +100,19 @@ namespace DangKi.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("HashPassword")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("TeacherName")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("TeacherId");
@@ -101,15 +124,30 @@ namespace DangKi.Migrations
                 {
                     b.HasOne("DangKi.Models.Course", "Course")
                         .WithMany()
-                        .HasForeignKey("CourseId");
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DangKi.Models.Teacher", "Teacher")
                         .WithMany("Schedules")
-                        .HasForeignKey("TeacherId");
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Course");
 
                     b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("DangKi.Models.ScheduleDetails", b =>
+                {
+                    b.HasOne("DangKi.Models.Schedule", "Schedule")
+                        .WithMany()
+                        .HasForeignKey("ScheduleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Schedule");
                 });
 
             modelBuilder.Entity("DangKi.Models.Teacher", b =>
