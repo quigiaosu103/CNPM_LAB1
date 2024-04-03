@@ -16,6 +16,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Collections;
 using System.Drawing;
 using TheArtOfDevHtmlRenderer.Adapters;
+using Microsoft.EntityFrameworkCore.Metadata;
 namespace DangKi.User_Control
 {
     public partial class frAnalysis : UserControl
@@ -61,10 +62,11 @@ namespace DangKi.User_Control
 
         private void LoadSchedulesDuration()
         {
+            int duration = 0;
             using (var context = new MyDbContext())
             {
                 var list = context.Schedules
-                    .Where(sc => sc.Teacher.TeacherId == 1)
+                    .Where(sc => sc.Teacher.TeacherId == UserInfo.currentUser.TeacherId)
                     .GroupBy(sc => sc.dateTime.Date)
                     .Select(sc => new
                     {
@@ -73,12 +75,15 @@ namespace DangKi.User_Control
                     }).ToList();
                 foreach (var schedule in list)
                 {
+                    duration += schedule.value;
                     gunaLineDataset.DataPoints.Add(new LPoint()
                     {
                         Label = schedule.date.ToString("dd/MM/yy"),
                         Y = schedule.value,
                     });
                 }
+
+                txtDuration.Text = duration.ToString(); 
 
                
 
@@ -88,10 +93,11 @@ namespace DangKi.User_Control
 
         private void LoadSchedulesEarned()
         {
+            int totalEarned = 0;
             using (var context = new MyDbContext())
             {
                 var earnedList = context.Schedules
-                   .Where(sc => sc.Teacher.TeacherId == 1)
+                   .Where(sc => sc.Teacher.TeacherId == UserInfo.currentUser.TeacherId)
                    .GroupBy(sc => sc.dateTime.Date)
                    .Select(sc => new
                    {
@@ -101,12 +107,14 @@ namespace DangKi.User_Control
 
                 foreach (var schedule in earnedList)
                 {
+                    totalEarned+= schedule.value;
                     gunaLineEarnedDataset.DataPoints.Add(new LPoint()
                     {
                         Label = schedule.date.ToString("dd/MM/yy"),
                         Y = schedule.value,
                     });
                 }
+                txtTotalEarned.Text = totalEarned.ToString();   
             }
         }
 
@@ -121,7 +129,7 @@ namespace DangKi.User_Control
             using (var context = new MyDbContext())
             {
                 var earnedList = context.Schedules
-                   .Where(sc => sc.Teacher.TeacherId == 1 && sc.dateTime.Date >= from && sc.dateTime.Date <= to)
+                   .Where(sc => sc.Teacher.TeacherId == UserInfo.currentUser.TeacherId && sc.dateTime.Date >= from && sc.dateTime.Date <= to)
                    .GroupBy(sc => sc.dateTime.Date)
                    .Select(sc => new
                    {
@@ -139,7 +147,7 @@ namespace DangKi.User_Control
                     });
                 }
                 var list = context.Schedules
-                    .Where(sc => sc.Teacher.TeacherId == 1 && sc.dateTime.Date >= from && sc.dateTime.Date <= to)
+                    .Where(sc => sc.Teacher.TeacherId == UserInfo.currentUser.TeacherId && sc.dateTime.Date >= from && sc.dateTime.Date <= to)
                     .GroupBy(sc => sc.dateTime.Date)
                     .Select(sc => new
                     {

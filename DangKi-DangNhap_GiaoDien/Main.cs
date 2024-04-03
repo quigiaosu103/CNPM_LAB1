@@ -45,5 +45,10 @@ namespace DangKi
             UserControl scheduleUC = new frSchedule();
             addUserControl(scheduleUC);
         }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -11,7 +11,11 @@ namespace DangKi
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Main());
+            Form login = new Login();
+            if(login.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new Main());
+            }
         }
     }
 }
