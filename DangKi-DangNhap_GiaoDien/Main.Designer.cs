@@ -108,7 +108,6 @@
             Controls.Add(button1);
             Name = "Main";
             Text = "Main";
-            Load += Main_Load;
             sideBarPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
