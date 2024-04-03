@@ -40,6 +40,10 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows7.0",
           "dependencies": {
+            "EPPlus": {
+              "target": "Package",
+              "version": "[7.1.0, )"
+            },
             "Guna.Charts.WinForms": {
               "target": "Package",
               "version": "[1.0.9, )"

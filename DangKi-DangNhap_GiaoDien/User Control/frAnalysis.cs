@@ -17,6 +17,7 @@ using System.Collections;
 using System.Drawing;
 using TheArtOfDevHtmlRenderer.Adapters;
 using Microsoft.EntityFrameworkCore.Metadata;
+using OfficeOpenXml;
 namespace DangKi.User_Control
 {
     public partial class frAnalysis : UserControl
@@ -83,9 +84,9 @@ namespace DangKi.User_Control
                     });
                 }
 
-                txtDuration.Text = duration.ToString(); 
+                txtDuration.Text = duration.ToString();
 
-               
+
 
             }
 
@@ -107,14 +108,14 @@ namespace DangKi.User_Control
 
                 foreach (var schedule in earnedList)
                 {
-                    totalEarned+= schedule.value;
+                    totalEarned += schedule.value;
                     gunaLineEarnedDataset.DataPoints.Add(new LPoint()
                     {
                         Label = schedule.date.ToString("dd/MM/yy"),
                         Y = schedule.value,
                     });
                 }
-                txtTotalEarned.Text = totalEarned.ToString();   
+                txtTotalEarned.Text = totalEarned.ToString();
             }
         }
 
@@ -166,13 +167,62 @@ namespace DangKi.User_Control
 
                 txtDuration.Text = duration.ToString();
                 txtTotalEarned.Text = totalEarned.ToString();
-
-
             }
         }
+
+
+        private void frAnalysis_Load(object sender, EventArgs e)
+        {
+            
+        }
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            DateTime from = dateTimePicker1.Value.Date;
+            DateTime to = dateTimePicker2.Value.Date;
+            int totalEarned = 0;
+            var duration = 0;
+            using (var context = new MyDbContext())
+            {
+                var earnedList = context.Schedules
+                   .Where(sc => sc.Teacher.TeacherId == UserInfo.currentUser.TeacherId && sc.dateTime.Date >= from && sc.dateTime.Date <= to)
+                   .GroupBy(sc => sc.dateTime.Date)
+                   .Select(sc => new
+                   {
+                       date = sc.Key,
+                       value = sc.Sum(g => g.Course.Price * g.Duration)
+                   }).ToList();
+                var list = context.Schedules
+                    .Where(sc => sc.Teacher.TeacherId == UserInfo.currentUser.TeacherId && sc.dateTime.Date >= from && sc.dateTime.Date <= to)
+                    .GroupBy(sc => sc.dateTime.Date)
+                    .Select(sc => new
+                    {
+                        date = sc.Key,
+                        value = sc.Sum(g => g.Duration)
+                    }).ToList();
+               
+
+                using (ExcelPackage excelPackage = new ExcelPackage())
+                {
+                    ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+                    worksheet.Cells[1, 1].Value = "Date";
+                    worksheet.Cells[1, 2].Value = "Duration";
+                    worksheet.Cells[1, 3].Value = "Earned";
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        worksheet.Cells[i + 2, 1].Value = list[i].date;
+                        worksheet.Cells[i + 2, 2].Value = list[i].value;
+                        worksheet.Cells[i + 2, 3].Value = earnedList[i].value;
+                    }
+                    string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "output.xlsx");
+                    FileInfo excelFile = new FileInfo(filePath);
+                    excelPackage.SaveAs(excelFile);
+                }
+            }
+        }
+
+        private ExcelPackage exel;
         private GunaLineDataset gunaLineDataset;
         private GunaLineDataset gunaLineEarnedDataset;
 
-        
     }
 }

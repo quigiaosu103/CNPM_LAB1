@@ -67,6 +67,8 @@
             Guna.Charts.WinForms.ChartFont chartFont15 = new Guna.Charts.WinForms.ChartFont();
             Guna.Charts.WinForms.Tick tick6 = new Guna.Charts.WinForms.Tick();
             Guna.Charts.WinForms.ChartFont chartFont16 = new Guna.Charts.WinForms.ChartFont();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             label1 = new Label();
             panel1 = new Panel();
             button1 = new Button();
@@ -84,6 +86,7 @@
             txtDuration = new Label();
             gunaChart = new Guna.Charts.WinForms.GunaChart();
             gunaChartEarned = new Guna.Charts.WinForms.GunaChart();
+            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             panel1.SuspendLayout();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
@@ -338,11 +341,29 @@
             gunaChartEarned.ZAxes.Ticks = tick6;
             gunaChartEarned.Load += gunaChartEarned_Load;
             // 
+            // guna2Button1
+            // 
+            guna2Button1.CustomizableEdges = customizableEdges9;
+            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2Button1.ForeColor = Color.White;
+            guna2Button1.Location = new Point(15, 453);
+            guna2Button1.Name = "guna2Button1";
+            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            guna2Button1.Size = new Size(180, 45);
+            guna2Button1.TabIndex = 12;
+            guna2Button1.Text = "Export to Exel";
+            guna2Button1.Click += guna2Button1_Click;
+            // 
             // frAnalysis
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(guna2Button1);
             Controls.Add(gunaChartEarned);
             Controls.Add(gunaChart);
             Controls.Add(guna2Panel2);
@@ -351,6 +372,7 @@
             Controls.Add(label1);
             Name = "frAnalysis";
             Size = new Size(882, 545);
+            Load += frAnalysis_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             guna2Panel1.ResumeLayout(false);
@@ -382,5 +404,6 @@
         private Label txtDuration;
         private Guna.Charts.WinForms.GunaChart gunaChart;
         private Guna.Charts.WinForms.GunaChart gunaChartEarned;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }
